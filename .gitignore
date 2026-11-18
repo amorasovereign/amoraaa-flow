@@ -11,3 +11,4 @@ server/data/*.sqlite-wal
 
 *.log
 .DS_Store
+.claude/
