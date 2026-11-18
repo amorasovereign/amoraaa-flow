@@ -10,10 +10,10 @@ Sistema de agendamento para salões, barbearias, manicures, clínicas e afins, v
 
 ```
 agenda-salao/
-├── server/                         API (Node + Express + Sequelize + SQLite)
+├── server/                         API (Node + Express + Sequelize + PostgreSQL)
 │   ├── src/
 │   │   ├── server.js               inicia a API, cria/ajusta as tabelas e roda o seed
-│   │   ├── db.js                   banco SQLite em arquivo (SQLITE_PATH)
+│   │   ├── db.js                   conexão com o Postgres (DATABASE_URL)
 │   │   ├── seed.js                 cria o admin e um salão de exemplo (banco vazio)
 │   │   ├── models/index.js         Negocio, Usuario, Profissional, Servico,
 │   │   │                           ProfissionalServico, Cliente, Agendamento, Cupom, Bloqueio
@@ -76,11 +76,17 @@ O aviso ao cliente pode ser desligado por negócio (Configurações) ou em cada 
 ## Rodar local
 
 ```bash
+# Banco (Postgres local via Docker — só na primeira vez)
+docker compose up -d   # sobe o Postgres em localhost:5432 (usuário/senha "postgres", banco "agenda")
+
 # API
 cd server
-cp .env.example .env   # preencha JWT_SECRET, ADMIN_EMAIL e ADMIN_SENHA (o banco SQLite é criado sozinho em server/data/)
+cp .env.example .env   # preencha JWT_SECRET, ADMIN_EMAIL e ADMIN_SENHA (DATABASE_URL já aponta pro Postgres do docker-compose)
 npm install
 npm run dev            # http://localhost:3000 (cria as tabelas, o admin e um salão de exemplo)
+
+# Já tinha dados no SQLite antigo? Com o Postgres rodando e o server PARADO:
+npm run migrar:postgres
 
 # Exemplos de demonstração (opcional)
 npm run exemplos              # cria 9 negócios completos
@@ -115,15 +121,15 @@ Cada exemplo também tem `profissional@<negocio>.demo` (e `recepcao@<negocio>.de
 
 ## Railway
 
-- **Banco (SQLite):** no serviço `server`, crie um **Volume** montado em `/data` e defina `SQLITE_PATH=/data/agenda.sqlite`. Sem o volume, o arquivo do banco é apagado a cada deploy.
+- **Banco (PostgreSQL):** adicione o plugin **PostgreSQL** do Railway ao projeto — ele cria a variável `DATABASE_URL` sozinho; basta referenciá-la no serviço `server` (`DATABASE_URL=${{Postgres.DATABASE_URL}}`).
 - **Serviço `server`:**
   - Root Directory `server`, Start Command `npm start`.
-  - Variables: `SQLITE_PATH`, `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_SENHA`, `N8N_API_KEY`, `N8N_WEBHOOK_AGENDA` e, se não quiser o salão de exemplo, `SEED_EXEMPLO=false`.
+  - Variables: `DATABASE_URL` (do plugin Postgres), `DB_SSL=true`, `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_SENHA`, `N8N_API_KEY`, `N8N_WEBHOOK_AGENDA` e, se não quiser o salão de exemplo, `SEED_EXEMPLO=false`.
 - **Serviço `cliente`:**
   - Root Directory `cliente`, Build `npm run build`, Start `npm start`.
   - Variable: `VITE_API_URL=https://SEU-BACKEND.up.railway.app/api`.
 
-O banco é um arquivo SQLite. Para fazer backup, copie o arquivo `agenda.sqlite` (com o servidor parado ou junto com os arquivos `-wal` e `-shm`). O banco da versão anterior (Postgres, um negócio só) não é migrado automaticamente.
+Para fazer backup, use `pg_dump $DATABASE_URL > backup.sql` (o próprio Railway também tem backup automático no plugin Postgres). Se você vinha do SQLite (versão anterior), rode `npm run migrar:postgres` localmente, apontando `DATABASE_URL` para o Postgres novo, com o arquivo `agenda.sqlite` antigo em `server/data/`.
 
 ## n8n (um fluxo para todos os negócios)
 

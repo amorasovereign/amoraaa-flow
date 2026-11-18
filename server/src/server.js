@@ -33,7 +33,7 @@ async function start() {
   try {
     await sequelize.authenticate();
     await sequelize.ready;
-    await sequelize.sync(); // cria as tabelas que faltarem (SQLite)
+    await sequelize.sync(); // cria as tabelas que faltarem (Postgres)
     await semear();
     app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
   } catch (e) {

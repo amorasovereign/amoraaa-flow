@@ -192,7 +192,7 @@ router.delete("/bloqueios/:id", recepcao, tratar(async (req, res) => {
 router.get("/clientes", recepcao, tratar(async (req, res) => {
   const q = String(req.query.q || "").trim();
   const where = { negocioId: nid(req) };
-  if (q) where[Op.or] = [{ nome: { [Op.like]: `%${q}%` } }, { telefone: { [Op.like]: `%${A.somenteDigitos(q) || q}%` } }];
+  if (q) where[Op.or] = [{ nome: { [Op.iLike]: `%${q}%` } }, { telefone: { [Op.iLike]: `%${A.somenteDigitos(q) || q}%` } }];
   res.json(await Cliente.findAll({ where, order: [["nome", "ASC"]], limit: 50 }));
 }));
 
@@ -207,7 +207,7 @@ router.get("/agendamentos", tratar(async (req, res) => {
   if (req.query.status) where.status = String(req.query.status).split(",");
   if (req.query.profissionalId && !where.profissionalId) where.profissionalId = Number(req.query.profissionalId);
   const q = String(req.query.q || "").trim();
-  if (q) where[Op.or] = [{ clienteNome: { [Op.like]: `%${q}%` } }, { telefone: { [Op.like]: `%${A.somenteDigitos(q) || q}%` } }];
+  if (q) where[Op.or] = [{ clienteNome: { [Op.iLike]: `%${q}%` } }, { telefone: { [Op.iLike]: `%${A.somenteDigitos(q) || q}%` } }];
   res.json(await Agendamento.findAll({ where, order: [["data", "ASC"], ["inicio", "ASC"]] }));
 }));
 router.get("/agendamentos/:id", tratar(async (req, res) => {

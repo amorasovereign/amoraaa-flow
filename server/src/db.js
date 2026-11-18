@@ -1,24 +1,17 @@
-const path = require("path");
-const fs = require("fs");
 const { Sequelize } = require("sequelize");
 
-// Banco SQLite em arquivo. SQLITE_PATH define onde fica o arquivo
-// (padrão: server/data/agenda.sqlite). No Railway, aponte para um volume
-// (ex.: /data/agenda.sqlite) para os dados não sumirem a cada deploy.
-const arquivo = path.resolve(process.env.SQLITE_PATH || path.join(__dirname, "..", "data", "agenda.sqlite"));
-fs.mkdirSync(path.dirname(arquivo), { recursive: true });
+// Banco PostgreSQL. DATABASE_URL já vem pronta no Railway, Render, Supabase
+// etc. — para Postgres local (docker, Postgres.app), monte a própria URL,
+// ex.: postgresql://postgres:SENHA@localhost:5432/agenda
+const urlConexao = process.env.DATABASE_URL || "postgresql://postgres:postgres@localhost:5432/agenda";
 
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: arquivo,
+const sequelize = new Sequelize(urlConexao, {
+  dialect: "postgres",
   logging: false,
+  // A maioria dos provedores de nuvem exige SSL; Postgres local, não.
+  dialectOptions: process.env.DB_SSL === "false" ? {} : { ssl: { require: true, rejectUnauthorized: false } },
 });
 
-// Mais segurança e desempenho com várias requisições ao mesmo tempo
-sequelize.ready = (async () => {
-  await sequelize.query("PRAGMA journal_mode = WAL;");
-  await sequelize.query("PRAGMA foreign_keys = ON;");
-  await sequelize.query("PRAGMA busy_timeout = 5000;");
-})();
+sequelize.ready = Promise.resolve();
 
 module.exports = sequelize;
