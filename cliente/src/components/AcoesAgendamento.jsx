@@ -37,7 +37,7 @@ export default function AcoesAgendamento({ ag, onEditar, onAlterado, onErro, com
       {ag.status === "agendado" && <button type="button" style={b} onClick={() => mudarStatus("confirmado")}>Confirmar</button>}
       {ativo && <button type="button" style={{ ...b, color: "#6FD69A" }} onClick={() => mudarStatus("concluido")}>Concluir</button>}
       {ativo && <button type="button" style={{ ...b, color: "#F0B060" }} onClick={() => mudarStatus("faltou")}>Faltou</button>}
-      {ativo && !ehProfissional && <button type="button" style={{ ...b, color: "#A3A3A3" }} onClick={() => setCancelando(true)}>Cancelar</button>}
+      {ativo && !ehProfissional && <button type="button" style={{ ...b, color: "#9AA0AA" }} onClick={() => setCancelando(true)}>Cancelar</button>}
       {podeAgendar && <button type="button" style={{ ...b, color: "#F28B8B" }} onClick={remover}>Remover</button>}
       {cancelando && (
         <CancelarModal
@@ -60,7 +60,7 @@ function CancelarModal({ ag, onClose, onConfirmar }) {
     <div style={s.overlay} onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
       <div style={{ ...s.modal, maxWidth: 440 }}>
         <h2 style={{ margin: "0 0 6px", fontSize: 20, fontWeight: 800 }}>Cancelar agendamento</h2>
-        <p style={{ margin: "0 0 14px", fontSize: 13.5, color: "#A3A3A3" }}>
+        <p style={{ margin: "0 0 14px", fontSize: 13.5, color: "#9AA0AA" }}>
           {ag.clienteNome} · {dataBR(ag.data)} às {ag.inicio} com {ag.profissionalNome}
         </p>
         <label style={s.label}>Motivo (opcional, vai na mensagem ao cliente)</label>
@@ -71,11 +71,11 @@ function CancelarModal({ ag, onClose, onConfirmar }) {
             Avisar o cliente no WhatsApp
           </label>
         ) : (
-          <p style={{ fontSize: 12.5, color: "#8A8A8A", marginTop: 12 }}>Sem telefone cadastrado: o cliente não será avisado.</p>
+          <p style={{ fontSize: 12.5, color: "#6E7482", marginTop: 12 }}>Sem telefone cadastrado: o cliente não será avisado.</p>
         )}
         <div style={{ display: "flex", justifyContent: "flex-end", gap: 10, marginTop: 20 }}>
           <button style={s.btnSecondary} onClick={onClose}>Voltar</button>
-          <button style={{ ...s.btnDanger, background: "#F28B8B", color: "#141414", borderColor: "#F28B8B" }} onClick={() => onConfirmar(motivo, avisar)}>Cancelar agendamento</button>
+          <button style={{ ...s.btnDanger, background: "#F28B8B", color: "#13171D", borderColor: "#F28B8B" }} onClick={() => onConfirmar(motivo, avisar)}>Cancelar agendamento</button>
         </div>
       </div>
     </div>

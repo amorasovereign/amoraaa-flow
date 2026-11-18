@@ -116,15 +116,15 @@ export default function Configuracoes() {
               </div>
               <div>
                 <label style={s.label}>Instância do WhatsApp</label>
-                <input style={{ ...s.input, background: ehAdmin ? s.input.backgroundColor : "#1F1F1F" }} value={cfg.instanciaWhatsapp || ""} disabled={!ehAdmin} onChange={(e) => set("instanciaWhatsapp", e.target.value)} />
+                <input style={{ ...s.input, background: ehAdmin ? s.input.backgroundColor : "#1C2027" }} value={cfg.instanciaWhatsapp || ""} disabled={!ehAdmin} onChange={(e) => set("instanciaWhatsapp", e.target.value)} />
               </div>
             </div>
-            <p style={{ fontSize: 12, color: "#8A8A8A", margin: "6px 0 0" }}>O dono recebe a agenda todo dia às 3h e a cada mudança. A instância liga o número do WhatsApp a este negócio (só o administrador altera).</p>
+            <p style={{ fontSize: 12, color: "#6E7482", margin: "6px 0 0" }}>O dono recebe a agenda todo dia às 3h e a cada mudança. A instância liga o número do WhatsApp a este negócio (só o administrador altera).</p>
           </div>
 
           <div style={s.card}>
             <strong style={sec}>Dias e horário de funcionamento</strong>
-            <p style={{ fontSize: 12.5, color: "#A3A3A3", margin: "4px 0 12px" }}>Marque os dias em que abre, o horário e as pausas (almoço, intervalo). Profissionais podem ter horário próprio dentro deste.</p>
+            <p style={{ fontSize: 12.5, color: "#9AA0AA", margin: "4px 0 12px" }}>Marque os dias em que abre, o horário e as pausas (almoço, intervalo). Profissionais podem ter horário próprio dentro deste.</p>
             <HorariosEditor valor={cfg.horarios} onChange={(h) => set("horarios", h)} />
             <div className="grade-responsiva" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginTop: 14 }}>
               <div>
@@ -148,14 +148,14 @@ export default function Configuracoes() {
 
           <div style={s.card}>
             <strong style={sec}>Folgas, feriados e bloqueios</strong>
-            <p style={{ fontSize: 12.5, color: "#A3A3A3", margin: "4px 0 12px" }}>Feche a agenda num dia (feriado), num período (férias) ou num intervalo de horas, para todos ou para um profissional.</p>
+            <p style={{ fontSize: 12.5, color: "#9AA0AA", margin: "4px 0 12px" }}>Feche a agenda num dia (feriado), num período (férias) ou num intervalo de horas, para todos ou para um profissional.</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {bloqueios.length === 0 && <span style={{ fontSize: 13, color: "#8A8A8A" }}>Nenhum bloqueio futuro.</span>}
+              {bloqueios.length === 0 && <span style={{ fontSize: 13, color: "#6E7482" }}>Nenhum bloqueio futuro.</span>}
               {bloqueios.map((b) => (
-                <div key={b.id} style={{ display: "flex", justifyContent: "space-between", gap: 8, borderBottom: "1px solid #1F1F1F", paddingBottom: 8 }}>
+                <div key={b.id} style={{ display: "flex", justifyContent: "space-between", gap: 8, borderBottom: "1px solid #1C2027", paddingBottom: 8 }}>
                   <div style={{ fontSize: 13.5 }}>
                     <strong>{b.motivo || "Bloqueio"}</strong>
-                    <div style={{ fontSize: 12.5, color: "#A3A3A3" }}>
+                    <div style={{ fontSize: 12.5, color: "#9AA0AA" }}>
                       {dataBR(b.dataInicio)}{b.dataFim !== b.dataInicio ? ` a ${dataBR(b.dataFim)}` : ""} · {b.inicio ? `${b.inicio}–${b.fim}` : "dia inteiro"} · {b.profissionalId ? nomeProf(b.profissionalId) : "todo o negócio"}
                     </div>
                   </div>
@@ -240,7 +240,7 @@ export default function Configuracoes() {
 
           <div style={s.card}>
             <strong style={sec}>Descontos por quantidade de serviços</strong>
-            <p style={{ fontSize: 12.5, color: "#A3A3A3", margin: "4px 0 10px" }}>Vale a maior faixa atingida no mesmo agendamento.</p>
+            <p style={{ fontSize: 12.5, color: "#9AA0AA", margin: "4px 0 10px" }}>Vale a maior faixa atingida no mesmo agendamento.</p>
             {faixas.map((f, i) => (
               <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 1fr auto", gap: 8, marginBottom: 8, alignItems: "center" }}>
                 <input type="number" min="2" style={s.input} value={f.minServicos} onChange={(e) => set("descontosQuantidade", faixas.map((x, j) => (j === i ? { ...x, minServicos: e.target.value } : x)))} placeholder="A partir de N serviços" />
@@ -254,12 +254,12 @@ export default function Configuracoes() {
           <div style={s.card}>
             <strong style={sec}>Cupons</strong>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 10 }}>
-              {cupons.length === 0 && <span style={{ fontSize: 13, color: "#8A8A8A" }}>Nenhum cupom.</span>}
+              {cupons.length === 0 && <span style={{ fontSize: 13, color: "#6E7482" }}>Nenhum cupom.</span>}
               {cupons.map((c) => (
-                <div key={c.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, borderBottom: "1px solid #1F1F1F", paddingBottom: 8 }}>
+                <div key={c.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, borderBottom: "1px solid #1C2027", paddingBottom: 8 }}>
                   <div>
                     <strong>{c.codigo}</strong> · {Number(c.percentual)}%{!c.ativo && " (inativo)"}
-                    <div style={{ fontSize: 12, color: "#8A8A8A" }}>
+                    <div style={{ fontSize: 12, color: "#6E7482" }}>
                       {c.descricao || "—"}
                       {c.validoAte ? ` · até ${dataBR(c.validoAte)}` : ""}
                     </div>

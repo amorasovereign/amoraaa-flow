@@ -25,7 +25,7 @@ export default function HorariosEditor({ valor, onChange, rotuloAberto = "Abre" 
       {DIAS.map((nome, i) => {
         const d = ler(i);
         return (
-          <div key={i} style={{ border: "1px solid #262626", borderRadius: 12, padding: "10px 12px", background: d ? "#141414" : "#0F0F0F" }}>
+          <div key={i} style={{ border: "1px solid #262B33", borderRadius: 12, padding: "10px 12px", background: d ? "#13171D" : "#0D1014" }}>
             <div style={{ display: "grid", gridTemplateColumns: "92px 88px 1fr 1fr auto", gap: 8, alignItems: "center" }}>
               <strong style={{ fontSize: 14 }}>{nome}</strong>
               <label style={{ fontSize: 13, display: "flex", gap: 6, alignItems: "center", cursor: "pointer" }}>
@@ -46,16 +46,16 @@ export default function HorariosEditor({ valor, onChange, rotuloAberto = "Abre" 
                   </button>
                 </>
               ) : (
-                <span style={{ gridColumn: "3 / 6", fontSize: 13, color: "#8A8A8A" }}>Fechado</span>
+                <span style={{ gridColumn: "3 / 6", fontSize: 13, color: "#6E7482" }}>Fechado</span>
               )}
             </div>
             {d && (
               <div style={{ marginTop: 8, paddingLeft: 100, display: "flex", flexDirection: "column", gap: 6 }}>
                 {d.pausas.map((p, k) => (
                   <div key={k} style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" }}>
-                    <span style={{ fontSize: 12.5, color: "#A3A3A3", width: 50 }}>Pausa</span>
+                    <span style={{ fontSize: 12.5, color: "#9AA0AA", width: 50 }}>Pausa</span>
                     <input type="time" style={{ ...s.input, width: 130 }} value={p.inicio} onChange={(e) => mudar(i, { ...d, pausas: d.pausas.map((x, j) => (j === k ? { ...x, inicio: e.target.value } : x)) })} />
-                    <span style={{ fontSize: 12.5, color: "#A3A3A3" }}>até</span>
+                    <span style={{ fontSize: 12.5, color: "#9AA0AA" }}>até</span>
                     <input type="time" style={{ ...s.input, width: 130 }} value={p.fim} onChange={(e) => mudar(i, { ...d, pausas: d.pausas.map((x, j) => (j === k ? { ...x, fim: e.target.value } : x)) })} />
                     <button type="button" style={{ ...s.linkBtn, color: "#F28B8B", fontSize: 12 }} onClick={() => mudar(i, { ...d, pausas: d.pausas.filter((_, j) => j !== k) })}>Remover</button>
                   </div>

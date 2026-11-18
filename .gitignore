@@ -1,0 +1,13 @@
+node_modules/
+dist/
+build/
+
+# Segredos e dados locais — use os .env.example como referência
+.env
+.env.local
+server/data/*.sqlite
+server/data/*.sqlite-shm
+server/data/*.sqlite-wal
+
+*.log
+.DS_Store

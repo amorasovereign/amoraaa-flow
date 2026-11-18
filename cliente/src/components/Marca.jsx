@@ -1,44 +1,33 @@
-// Identidade Amora Studio: ícone (escudo + relógio), logotipo e ícones de traço.
+// Identidade Amora Flow: ícone (lobo em brasão), logotipo e ícones de traço.
 // Sem emojis: todo ícone do sistema sai daqui, em SVG.
 
-let seq = 0;
-
-export function LogoIcone({ tamanho = 40, titulo = "Amora Studio" }) {
-  const id = `am${++seq}`;
-  const traco = tamanho < 48 ? 1.6 : 1;
+export function LogoIcone({ tamanho = 40, titulo = "Amora Flow" }) {
   return (
-    <svg width={tamanho} height={tamanho} viewBox="0 0 300 300" role="img" aria-label={titulo} style={{ flexShrink: 0, display: "block" }}>
-      <defs>
-        <linearGradient id={`${id}p`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#FFFFFF" />
-          <stop offset="0.45" stopColor="#9A9A9A" />
-          <stop offset="0.7" stopColor="#E8E8E8" />
-          <stop offset="1" stopColor="#7C7C7C" />
-        </linearGradient>
-        <linearGradient id={`${id}o`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#FFD98A" />
-          <stop offset="0.5" stopColor="#E0A23A" />
-          <stop offset="1" stopColor="#9C6414" />
-        </linearGradient>
-      </defs>
-      <rect x="10" y="10" width="280" height="280" rx="64" fill="#0F0F0F" stroke={`url(#${id}p)`} strokeWidth={4 * traco} />
-      <path d="M90 70 Q150 56 210 70 L210 142 Q210 196 150 228 Q90 196 90 142 Z" fill="none" stroke={`url(#${id}p)`} strokeWidth={6 * traco} />
-      <line x1="150" y1="140" x2="128" y2="120" stroke={`url(#${id}p)`} strokeWidth={7 * traco} strokeLinecap="round" />
-      <line x1="150" y1="140" x2="176" y2="108" stroke={`url(#${id}o)`} strokeWidth={5 * traco} strokeLinecap="round" />
-      <circle cx="150" cy="140" r={7 * traco} fill={`url(#${id}o)`} />
+    <svg width={tamanho} height={tamanho} viewBox="0 0 100 100" role="img" aria-label={titulo} style={{ flexShrink: 0, display: "block" }}>
+      <path d="M50 6 L92 20 L92 50 C92 74 74 90 50 96 C26 90 8 74 8 50 L8 20 Z" fill="none" stroke="#AEB5BF" strokeWidth="3" />
+      <path d="M38 28 L45 50 L50 36 Z" fill="#49C2A0" />
+      <path d="M62 28 L55 50 L50 36 Z" fill="#49C2A0" />
+      <path
+        d="M50 34 C58 34 64 40 65 50 C66 58 63 64 58 68 L60 76 L52 72 L50 76 L48 72 L40 76 L42 68 C37 64 34 58 35 50 C36 40 42 34 50 34 Z"
+        fill="#3E7FB5"
+      />
+      <circle cx="44" cy="52" r="1.6" fill="#E7E9EC" />
+      <circle cx="56" cy="52" r="1.6" fill="#E7E9EC" />
     </svg>
   );
 }
 
-// "ΛMORΛ / STUDIO" com o triângulo dourado, como no Amora Sovereign.
-export function Logotipo({ tamanho = 18, subtitulo = "STUDIO" }) {
+// "AMORA FLOW" — wordmark geométrico, "FLOW" sempre em verde-fluxo.
+export function Logotipo({ tamanho = 18, subtitulo = "FLOW" }) {
   return (
-    <span style={{ display: "inline-flex", flexDirection: "column", lineHeight: 1, fontFamily: '"Jura", "Inter", sans-serif' }} aria-label="Amora Studio">
-      <span aria-hidden="true" style={{ fontSize: tamanho, fontWeight: 400, letterSpacing: "0.32em", color: "#EDEDED" }}>
-        ΛMORΛ<span style={{ color: "#E0A23A", fontSize: tamanho * 0.45, marginLeft: -tamanho * 0.25, verticalAlign: "top" }}>▲</span>
+    <span style={{ display: "inline-flex", alignItems: "baseline", gap: tamanho * 0.28, lineHeight: 1, fontFamily: '"Unbounded", "Manrope", sans-serif' }} aria-label="Amora Flow">
+      <span aria-hidden="true" style={{ fontSize: tamanho, fontWeight: 700, letterSpacing: "0.02em", color: "#E7E9EC" }}>
+        AMORA
       </span>
       {subtitulo && (
-        <span aria-hidden="true" style={{ fontSize: tamanho * 0.45, letterSpacing: "0.6em", color: "#A3A3A3", marginTop: tamanho * 0.3 }}>{subtitulo}</span>
+        <span aria-hidden="true" style={{ fontSize: tamanho * 0.86, fontWeight: 700, letterSpacing: "0.02em", color: "#49C2A0" }}>
+          {subtitulo}
+        </span>
       )}
     </span>
   );
@@ -60,6 +49,10 @@ const CAMINHOS = {
   nota: <><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z" /><path d="M14 3v6h6M8 13h8M8 17h5" /></>,
   bloqueio: <><circle cx="12" cy="12" r="9" /><path d="m5.6 5.6 12.8 12.8" /></>,
   ok: <path d="M20 6 9 17l-5-5" />,
+  email: <><rect x="2.5" y="5" width="19" height="14" rx="2.5" /><path d="m3.5 6.5 8.5 7 8.5-7" /></>,
+  cadeado: <><rect x="4.5" y="10.5" width="15" height="10" rx="2.5" /><path d="M7.5 10.5V7a4.5 4.5 0 0 1 9 0v3.5" /></>,
+  olho: <><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" /><circle cx="12" cy="12" r="3" /></>,
+  olhoFechado: <><path d="M3.5 3.5 20.5 20.5" /><path d="M9.9 5.3A10.6 10.6 0 0 1 12 5c6.5 0 10 7 10 7a14.4 14.4 0 0 1-3.1 3.9M6.8 6.8C4 8.6 2 12 2 12s3.5 7 10 7a9.9 9.9 0 0 0 3.3-.6" /><path d="M9.5 9.8a3 3 0 0 0 4.2 4.2" /></>,
 };
 
 export function Icone({ nome, tamanho = 18, cor = "currentColor", style }) {

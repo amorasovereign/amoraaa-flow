@@ -114,14 +114,14 @@ export default function Usuarios() {
               <tr key={u.id}>
                 <td style={s.td}>
                   <strong>{u.nome}</strong>
-                  {u.Profissional && <div style={{ fontSize: 12, color: "#8A8A8A" }}>Profissional: {u.Profissional.nome}</div>}
+                  {u.Profissional && <div style={{ fontSize: 12, color: "#6E7482" }}>Profissional: {u.Profissional.nome}</div>}
                 </td>
                 <td style={s.td}>{u.email}</td>
                 <td style={s.td}>{PAPEIS[u.papel]}</td>
                 <td style={s.td}>{u.Negocio?.nome || (u.papel === "admin" ? "Todos" : "—")}</td>
                 <td style={s.td}>{u.ultimoAcesso ? new Date(u.ultimoAcesso).toLocaleString("pt-BR") : "nunca"}</td>
                 <td style={s.td}>
-                  <span style={u.ativo ? s.chip("#0F2A1A", "#6FD69A") : s.chip("#1F1F1F", "#A3A3A3")}>{u.ativo ? "Ativo" : "Bloqueado"}</span>
+                  <span style={u.ativo ? s.chip("#0F2A1A", "#6FD69A") : s.chip("#1C2027", "#9AA0AA")}>{u.ativo ? "Ativo" : "Bloqueado"}</span>
                 </td>
                 <td style={s.td}>
                   <div style={{ display: "flex", gap: 12 }}>
@@ -156,7 +156,7 @@ export default function Usuarios() {
                 <option key={v} value={v}>{l}</option>
               ))}
             </select>
-            <p style={{ fontSize: 12, color: "#8A8A8A", margin: "6px 0 0" }}>{DESCRICAO[form.papel]}</p>
+            <p style={{ fontSize: 12, color: "#6E7482", margin: "6px 0 0" }}>{DESCRICAO[form.papel]}</p>
             {form.papel !== "admin" && (
               <>
                 <label style={{ ...s.label, marginTop: 12 }}>Negócio</label>

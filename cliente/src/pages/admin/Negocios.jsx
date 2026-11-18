@@ -97,7 +97,7 @@ export default function Negocios() {
               <tr key={n.id}>
                 <td style={s.td}>
                   <strong>{n.nome}</strong>
-                  <div style={{ fontSize: 12, color: "#8A8A8A" }}>{n.tipo || "—"}</div>
+                  <div style={{ fontSize: 12, color: "#6E7482" }}>{n.tipo || "—"}</div>
                 </td>
                 <td style={s.td}>{n.instanciaWhatsapp ? <code style={{ fontSize: 12.5 }}>{n.instanciaWhatsapp}</code> : <span style={{ color: "#F28B8B", fontSize: 12.5 }}>não ligada</span>}</td>
                 <td style={s.td}>{telefoneTexto(n.telefoneDono) || "—"}</td>
@@ -106,7 +106,7 @@ export default function Negocios() {
                 <td style={s.td}>{n.usuarios}</td>
                 <td style={s.td}>{n.agendamentosHoje}</td>
                 <td style={s.td}>
-                  <span style={n.ativo ? s.chip("#0F2A1A", "#6FD69A") : s.chip("#1F1F1F", "#A3A3A3")}>{n.ativo ? "Ativo" : "Inativo"}</span>
+                  <span style={n.ativo ? s.chip("#0F2A1A", "#6FD69A") : s.chip("#1C2027", "#9AA0AA")}>{n.ativo ? "Ativo" : "Inativo"}</span>
                 </td>
                 <td style={s.td}>
                   <div style={{ display: "flex", gap: 12 }}>
@@ -151,7 +151,7 @@ export default function Negocios() {
                 <input style={s.input} value={form.telefoneDono} onChange={(e) => setForm({ ...form, telefoneDono: e.target.value })} placeholder="5581999999999" />
               </div>
             </div>
-            <p style={{ fontSize: 12, color: "#8A8A8A", margin: "8px 0 0" }}>A instância precisa ter exatamente o mesmo nome criado na Evolution API. É por ela que o n8n sabe de qual negócio é cada mensagem.</p>
+            <p style={{ fontSize: 12, color: "#6E7482", margin: "8px 0 0" }}>A instância precisa ter exatamente o mesmo nome criado na Evolution API. É por ela que o n8n sabe de qual negócio é cada mensagem.</p>
             <label style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 14, fontSize: 14, cursor: "pointer" }}>
               <input type="checkbox" checked={form.ativo} onChange={(e) => setForm({ ...form, ativo: e.target.checked })} style={{ accentColor: s.OURO }} />
               Ativo (desativado: ninguém do negócio entra e o WhatsApp para de agendar)

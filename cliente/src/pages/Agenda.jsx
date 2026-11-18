@@ -130,9 +130,9 @@ export default function Agenda() {
           </p>
         </div>
         <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-          <div style={{ display: "flex", background: "#141414", border: "1.5px solid #2E2E2E", borderRadius: 10, overflow: "hidden" }}>
+          <div style={{ display: "flex", background: "#13171D", border: "1.5px solid #262B33", borderRadius: 10, overflow: "hidden" }}>
             {[["dia", "Dia por profissional"], ["mes", "Mês"]].map(([v, l]) => (
-              <button key={v} type="button" onClick={() => setVisao(v)} style={{ border: "none", padding: "9px 14px", fontWeight: 700, fontSize: 13.5, cursor: "pointer", background: visao === v ? s.OURO_CLARO : "#141414", color: visao === v ? s.OURO_ESCURO : "#A3A3A3" }}>
+              <button key={v} type="button" onClick={() => setVisao(v)} style={{ border: "none", padding: "9px 14px", fontWeight: 700, fontSize: 13.5, cursor: "pointer", background: visao === v ? s.OURO_CLARO : "#13171D", color: visao === v ? s.OURO_ESCURO : "#9AA0AA" }}>
                 {l}
               </button>
             ))}
@@ -152,9 +152,9 @@ export default function Agenda() {
       <>
       {profissionais.length > 1 && (
         <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
-          <button type="button" onClick={() => setFiltroProf("")} style={{ ...s.chip(filtroProf ? "#141414" : s.OURO_CLARO, filtroProf ? "#A3A3A3" : s.OURO_ESCURO), border: "1px solid #2E2E2E", cursor: "pointer" }}>Todos</button>
+          <button type="button" onClick={() => setFiltroProf("")} style={{ ...s.chip(filtroProf ? "#13171D" : s.OURO_CLARO, filtroProf ? "#9AA0AA" : s.OURO_ESCURO), border: "1px solid #262B33", cursor: "pointer" }}>Todos</button>
           {profissionais.map((p) => (
-            <button key={p.id} type="button" onClick={() => setFiltroProf(String(p.id))} style={{ ...s.chip(filtroProf === String(p.id) ? `${p.cor}22` : "#141414", filtroProf === String(p.id) ? p.cor : "#A3A3A3"), border: `1px solid ${filtroProf === String(p.id) ? p.cor : "#2E2E2E"}`, cursor: "pointer" }}>
+            <button key={p.id} type="button" onClick={() => setFiltroProf(String(p.id))} style={{ ...s.chip(filtroProf === String(p.id) ? `${p.cor}22` : "#13171D", filtroProf === String(p.id) ? p.cor : "#9AA0AA"), border: `1px solid ${filtroProf === String(p.id) ? p.cor : "#262B33"}`, cursor: "pointer" }}>
               ● {p.nome}
             </button>
           ))}
@@ -181,7 +181,7 @@ export default function Agenda() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 6 }}>
             {DIAS_CURTOS.map((d) => (
-              <div key={d} style={{ fontSize: 11.5, fontWeight: 700, color: "#8A8A8A", textAlign: "center", paddingBottom: 4 }}>{d}</div>
+              <div key={d} style={{ fontSize: 11.5, fontWeight: 700, color: "#6E7482", textAlign: "center", paddingBottom: 4 }}>{d}</div>
             ))}
             {celulas.map((iso, i) => {
               if (!iso) return <div key={`v${i}`} />;
@@ -199,8 +199,8 @@ export default function Agenda() {
                     padding: 8,
                     textAlign: "left",
                     cursor: "pointer",
-                    border: `1.5px solid ${sel ? s.OURO : ehHoje ? "#5C4718" : "#262626"}`,
-                    background: sel ? "#1A160D" : "#141414",
+                    border: `1.5px solid ${sel ? s.OURO : ehHoje ? "#1F4A63" : "#262B33"}`,
+                    background: sel ? "#0F2B24" : "#13171D",
                     display: "flex",
                     flexDirection: "column",
                     gap: 3,
@@ -209,7 +209,7 @@ export default function Agenda() {
                   <span style={{ fontSize: 13, fontWeight: 800, color: ehHoje ? s.OURO_ESCURO : "#D4D4D4" }}>{Number(iso.slice(8))}</span>
                   {info?.ativos > 0 && (
                     <>
-                      <span style={{ fontSize: 11, color: "#A3A3A3" }}>{info.ativos} atend.</span>
+                      <span style={{ fontSize: 11, color: "#9AA0AA" }}>{info.ativos} atend.</span>
                       <span style={{ fontSize: 11, fontWeight: 700, color: "#6FD69A" }}>{dinheiro(info.previsto)}</span>
                     </>
                   )}
@@ -217,39 +217,39 @@ export default function Agenda() {
               );
             })}
           </div>
-          {carregando && <p style={{ fontSize: 12, color: "#8A8A8A", margin: "10px 0 0" }}>Carregando...</p>}
+          {carregando && <p style={{ fontSize: 12, color: "#6E7482", margin: "10px 0 0" }}>Carregando...</p>}
         </div>
 
         {/* Dia selecionado */}
         <div style={s.card}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#8A8A8A", textTransform: "uppercase" }}>{DIAS[diaSemana(diaSel)]}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#6E7482", textTransform: "uppercase" }}>{DIAS[diaSemana(diaSel)]}</div>
               <div style={{ fontSize: 20, fontWeight: 800 }}>{dataBR(diaSel)}</div>
             </div>
             {podeAgendar && <button style={s.btnSecondary} onClick={() => setModal({ dataInicial: diaSel })}>+ Agendar</button>}
           </div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap", margin: "12px 0 14px" }}>
-            <span style={s.chip("#2A2110", "#F0C46A")}>{ativosDia.length} atendimento(s)</span>
+            <span style={s.chip("#0F2B24", "#7CE0C4")}>{ativosDia.length} atendimento(s)</span>
             <span style={s.chip("#0F2533", "#7CC4F0")}>{duracaoTexto(minutosDia)} ocupadas</span>
             <span style={s.chip("#0F2A1A", "#6FD69A")}>Previsto {dinheiro(previstoDia)}</span>
           </div>
 
           {doDia.length === 0 ? (
-            <p style={{ color: "#8A8A8A", fontSize: 14 }}>Nenhum agendamento neste dia.</p>
+            <p style={{ color: "#6E7482", fontSize: 14 }}>Nenhum agendamento neste dia.</p>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {doDia.map((a) => {
                 const st = s.STATUS[a.status] || s.STATUS.agendado;
                 const apagado = a.status === "cancelado" || a.status === "faltou";
                 return (
-                  <div key={a.id} style={{ border: "1px solid #262626", borderLeft: `4px solid ${apagado ? "#4A4A4A" : s.OURO}`, borderRadius: 12, padding: "10px 12px", opacity: apagado ? 0.6 : 1 }}>
+                  <div key={a.id} style={{ border: "1px solid #262B33", borderLeft: `4px solid ${apagado ? "#4A4A4A" : s.OURO}`, borderRadius: 12, padding: "10px 12px", opacity: apagado ? 0.6 : 1 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", gap: 8 }}>
                       <strong style={{ fontSize: 14 }}>{a.inicio}–{a.fim} · {a.clienteNome}</strong>
                       <span style={s.chip(st.bg, st.cor)}>{st.label}</span>
                     </div>
-                    <div style={{ fontSize: 13, color: "#BDBDBD", marginTop: 4 }}>{a.servicos.map((x) => x.nome).join(" + ")} · <strong>{a.profissionalNome}</strong></div>
-                    <div style={{ fontSize: 12.5, color: "#A3A3A3", marginTop: 2 }}>
+                    <div style={{ fontSize: 13, color: "#9AA0AA", marginTop: 4 }}>{a.servicos.map((x) => x.nome).join(" + ")} · <strong>{a.profissionalNome}</strong></div>
+                    <div style={{ fontSize: 12.5, color: "#9AA0AA", marginTop: 2 }}>
                       {dinheiro(a.total)}
                       {Number(a.descontoValor) > 0 && ` (desconto ${dinheiro(a.descontoValor)})`}
                       {a.telefone && ` · ${telefoneTexto(a.telefone)}`}

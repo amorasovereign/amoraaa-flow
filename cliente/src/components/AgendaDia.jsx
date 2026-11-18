@@ -5,7 +5,7 @@ import * as s from "../styles";
 import { DIAS, dataBR, diaSemana, dinheiro, hojeISO, somarDias, telefoneTexto } from "../utils";
 import { Icone } from "./Marca";
 
-const ICO = { color: "#E0A23A", marginRight: 4 };
+const ICO = { color: "#49C2A0", marginRight: 4 };
 
 const ALTURA_HORA = 72; // px por hora
 const paraMin = (h) => {
@@ -63,11 +63,11 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
     <div style={s.card}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, flexWrap: "wrap", marginBottom: 14 }}>
         <div>
-          <div style={{ fontSize: 12, fontWeight: 700, color: "#8A8A8A", textTransform: "uppercase" }}>{DIAS[diaSemana(data)]}</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: "#6E7482", textTransform: "uppercase" }}>{DIAS[diaSemana(data)]}</div>
           <div style={{ fontSize: 20, fontWeight: 800 }}>{dataBR(data)}</div>
         </div>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-          <span style={s.chip("#2A2110", "#F0C46A")}>{ativos.length} atendimento(s)</span>
+          <span style={s.chip("#0F2B24", "#7CE0C4")}>{ativos.length} atendimento(s)</span>
           <span style={s.chip("#0F2A1A", "#6FD69A")}>Previsto {dinheiro(previsto)}</span>
         </div>
         <div style={{ display: "flex", gap: 8 }}>
@@ -79,14 +79,14 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
       </div>
 
       {erro && <div style={s.errorBox}>{erro}</div>}
-      {dia && !dia.negocio && <div style={{ ...s.successBox, background: "#0F0F0F", color: "#A3A3A3", borderColor: "#262626" }}>O negócio não abre neste dia.</div>}
+      {dia && !dia.negocio && <div style={{ ...s.successBox, background: "#0D1014", color: "#9AA0AA", borderColor: "#262B33" }}>O negócio não abre neste dia.</div>}
       {(dia?.bloqueios || []).filter((b) => !b.profissionalId).map((b) => (
         <div key={b.id} style={{ ...s.errorBox, background: "#2A1A0D", color: "#F5A66B", borderColor: "#5A3A18" }}>
           <Icone nome="bloqueio" tamanho={14} /> {b.motivo || "Bloqueio"} {b.inicio ? `(${b.inicio}–${b.fim})` : "(dia inteiro)"}
         </div>
       ))}
 
-      {dia && dia.profissionais.length === 0 && <p style={{ color: "#8A8A8A" }}>Nenhum profissional ativo.</p>}
+      {dia && dia.profissionais.length === 0 && <p style={{ color: "#6E7482" }}>Nenhum profissional ativo.</p>}
 
       {dia && dia.profissionais.length > 0 && (
         <div style={{ overflowX: "auto" }}>
@@ -96,7 +96,7 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
             {dia.profissionais.map((p) => (
               <div key={p.id} style={{ padding: "6px 8px 10px", borderBottom: `3px solid ${p.cor}`, textAlign: "center" }}>
                 <strong style={{ fontSize: 13.5 }}>{p.nome}</strong>
-                <div style={{ fontSize: 11.5, color: "#8A8A8A" }}>
+                <div style={{ fontSize: 11.5, color: "#6E7482" }}>
                   {p.trabalha ? `${p.abre}–${p.fecha} · ${p.agendamentos.filter((a) => a.status !== "cancelado").length} atend.` : "Não trabalha hoje"}
                 </div>
               </div>
@@ -105,7 +105,7 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
             {/* Régua de horas */}
             <div style={{ position: "relative", height: y(fim) }}>
               {horas.map((m) => (
-                <div key={m} style={{ position: "absolute", top: y(m) - 7, right: 8, fontSize: 11, color: "#8A8A8A" }}>{paraHora(m)}</div>
+                <div key={m} style={{ position: "absolute", top: y(m) - 7, right: 8, fontSize: 11, color: "#6E7482" }}>{paraHora(m)}</div>
               ))}
             </div>
 
@@ -114,22 +114,22 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
               <div
                 key={p.id}
                 onClick={(e) => e.target === e.currentTarget && cliqueColuna(p, e)}
-                style={{ position: "relative", height: y(fim), borderLeft: "1px solid #1F1F1F", background: p.trabalha ? "#141414" : "repeating-linear-gradient(45deg,#0F0F0F,#0F0F0F 8px,#1F1F1F 8px,#1F1F1F 16px)", cursor: p.trabalha && podeAgendar ? "copy" : "default" }}
+                style={{ position: "relative", height: y(fim), borderLeft: "1px solid #1C2027", background: p.trabalha ? "#13171D" : "repeating-linear-gradient(45deg,#0D1014,#0D1014 8px,#1C2027 8px,#1C2027 16px)", cursor: p.trabalha && podeAgendar ? "copy" : "default" }}
                 title={p.trabalha && podeAgendar ? "Clique num horário vazio para agendar" : ""}
               >
                 {horas.map((m) => (
-                  <div key={m} style={{ position: "absolute", top: y(m), left: 0, right: 0, borderTop: "1px solid #1F1F1F", pointerEvents: "none" }} />
+                  <div key={m} style={{ position: "absolute", top: y(m), left: 0, right: 0, borderTop: "1px solid #1C2027", pointerEvents: "none" }} />
                 ))}
                 {/* Fora do expediente */}
                 {p.trabalha && (
                   <>
-                    <div style={{ position: "absolute", top: 0, height: y(paraMin(p.abre)), left: 0, right: 0, background: "#1F1F1F", pointerEvents: "none" }} />
-                    <div style={{ position: "absolute", top: y(paraMin(p.fecha)), bottom: 0, left: 0, right: 0, background: "#1F1F1F", pointerEvents: "none" }} />
+                    <div style={{ position: "absolute", top: 0, height: y(paraMin(p.abre)), left: 0, right: 0, background: "#1C2027", pointerEvents: "none" }} />
+                    <div style={{ position: "absolute", top: y(paraMin(p.fecha)), bottom: 0, left: 0, right: 0, background: "#1C2027", pointerEvents: "none" }} />
                   </>
                 )}
                 {/* Pausas e bloqueios */}
                 {p.indisponivel.map((x, i) => (
-                  <div key={i} style={{ position: "absolute", top: y(paraMin(x.inicio)), height: y(paraMin(x.fim)) - y(paraMin(x.inicio)), left: 0, right: 0, background: "repeating-linear-gradient(45deg,#2A2110,#2A2110 6px,#5C4718 6px,#5C4718 12px)", opacity: 0.55, pointerEvents: "none", fontSize: 10.5, color: "#F0C46A", padding: "2px 6px" }}>
+                  <div key={i} style={{ position: "absolute", top: y(paraMin(x.inicio)), height: y(paraMin(x.fim)) - y(paraMin(x.inicio)), left: 0, right: 0, background: "repeating-linear-gradient(45deg,#0F2B24,#0F2B24 6px,#1F4A63 6px,#1F4A63 12px)", opacity: 0.55, pointerEvents: "none", fontSize: 10.5, color: "#7CE0C4", padding: "2px 6px" }}>
                     Pausa / bloqueio
                   </div>
                 ))}
@@ -152,7 +152,7 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
                         borderRadius: 8,
                         border: "none",
                         borderLeft: `4px solid ${apagado ? "#4A4A4A" : p.cor}`,
-                        background: apagado ? "#0F0F0F" : `${p.cor}18`,
+                        background: apagado ? "#0D1014" : `${p.cor}18`,
                         textAlign: "left",
                         padding: "3px 7px",
                         overflow: "hidden",
@@ -162,10 +162,10 @@ export default function AgendaDia({ data, setData, onNovo, onAbrir, recarregar }
                       }}
                       title={`${a.inicio}–${a.fim} · ${a.clienteNome} · ${a.servicos.map((x) => x.nome).join(" + ")} · ${st.label}`}
                     >
-                      <div style={{ fontSize: 12, fontWeight: 800, color: "#F2F2F2", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                      <div style={{ fontSize: 12, fontWeight: 800, color: "#E7E9EC", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                         {a.inicio} {a.clienteNome}
                       </div>
-                      {altura > 34 && <div style={{ fontSize: 11, color: "#BDBDBD", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{a.servicos.map((x) => x.nome).join(" + ")}</div>}
+                      {altura > 34 && <div style={{ fontSize: 11, color: "#9AA0AA", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{a.servicos.map((x) => x.nome).join(" + ")}</div>}
                       {altura > 50 && (
                         <div style={{ fontSize: 10.5, color: st.cor, fontWeight: 700 }}>
                           {st.label}
@@ -196,7 +196,7 @@ export function DetalheAgendamento({ ag, onClose, children }) {
         <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
           <div>
             <h2 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>{ag.clienteNome}</h2>
-            <div style={{ fontSize: 13, color: "#A3A3A3", marginTop: 2 }}>{telefoneTexto(ag.telefone) || "sem telefone"}</div>
+            <div style={{ fontSize: 13, color: "#9AA0AA", marginTop: 2 }}>{telefoneTexto(ag.telefone) || "sem telefone"}</div>
           </div>
           <span style={s.chip(st.bg, st.cor)}>{st.label}</span>
         </div>

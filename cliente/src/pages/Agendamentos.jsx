@@ -142,7 +142,7 @@ export default function Agendamentos() {
           <tbody>
             {!carregando && lista.length === 0 && (
               <tr>
-                <td style={{ ...s.td, color: "#8A8A8A" }} colSpan={8}>Nenhum agendamento com esses filtros.</td>
+                <td style={{ ...s.td, color: "#6E7482" }} colSpan={8}>Nenhum agendamento com esses filtros.</td>
               </tr>
             )}
             {lista.map((a) => {
@@ -151,20 +151,20 @@ export default function Agendamentos() {
                 <tr key={a.id} style={{ opacity: a.status === "cancelado" ? 0.6 : 1 }}>
                   <td style={s.td}>
                     <strong>{dataBR(a.data)}</strong>
-                    <div style={{ fontSize: 12, color: "#8A8A8A" }}>{DIAS_CURTOS[diaSemana(a.data)]}</div>
+                    <div style={{ fontSize: 12, color: "#6E7482" }}>{DIAS_CURTOS[diaSemana(a.data)]}</div>
                   </td>
                   <td style={s.td}>
                     {a.inicio}–{a.fim}
-                    <div style={{ fontSize: 12, color: "#8A8A8A" }}>{duracaoTexto(a.duracaoTotal)}</div>
+                    <div style={{ fontSize: 12, color: "#6E7482" }}>{duracaoTexto(a.duracaoTotal)}</div>
                   </td>
                   <td style={s.td}>
                     <strong>{a.clienteNome}</strong>
-                    <div style={{ fontSize: 12, color: "#8A8A8A" }}>
+                    <div style={{ fontSize: 12, color: "#6E7482" }}>
                       {telefoneTexto(a.telefone) || "—"}
                       {a.origem === "whatsapp" ? " · WhatsApp" : ""}
                     </div>
                   </td>
-                  <td style={s.td}>{a.profissionalNome}{a.profissionalEscolhidoPeloCliente ? <div style={{ fontSize: 11.5, color: "#8A8A8A" }}>escolhido pelo cliente</div> : null}</td>
+                  <td style={s.td}>{a.profissionalNome}{a.profissionalEscolhidoPeloCliente ? <div style={{ fontSize: 11.5, color: "#6E7482" }}>escolhido pelo cliente</div> : null}</td>
                   <td style={{ ...s.td, maxWidth: 260 }}>{a.servicos.map((x) => x.nome).join(" + ")}</td>
                   <td style={{ ...s.td, textAlign: "right", whiteSpace: "nowrap" }}>
                     <strong>{dinheiro(a.total)}</strong>

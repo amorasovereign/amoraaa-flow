@@ -98,7 +98,7 @@ export default function Servicos() {
               <tr key={x.id}>
                 <td style={s.td}>
                   <strong>{x.nome}</strong>
-                  {x.descricao && <div style={{ fontSize: 12, color: "#8A8A8A" }}>{x.descricao}</div>}
+                  {x.descricao && <div style={{ fontSize: 12, color: "#6E7482" }}>{x.descricao}</div>}
                 </td>
                 <td style={s.td}>{x.categoria || "—"}</td>
                 <td style={{ ...s.td, textAlign: "right" }}>{dinheiro(x.preco)}</td>
@@ -107,7 +107,7 @@ export default function Servicos() {
                   {quemFaz(x.id).length ? quemFaz(x.id).map((p) => p.nome).join(", ") : <span style={{ color: "#F28B8B" }}>Ninguém (não aparece para agendar)</span>}
                 </td>
                 <td style={s.td}>
-                  <span style={x.ativo ? s.chip("#0F2A1A", "#6FD69A") : s.chip("#1F1F1F", "#A3A3A3")}>{x.ativo ? "Ativo" : "Inativo"}</span>
+                  <span style={x.ativo ? s.chip("#0F2A1A", "#6FD69A") : s.chip("#1C2027", "#9AA0AA")}>{x.ativo ? "Ativo" : "Inativo"}</span>
                 </td>
                 <td style={s.td}>
                   <div style={{ display: "flex", gap: 12 }}>
@@ -149,7 +149,7 @@ export default function Servicos() {
                 <label style={{ ...s.label, marginTop: 12 }}>Quem faz este serviço</label>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {profissionais.filter((p) => p.ativo).map((p) => (
-                    <label key={p.id} style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13.5, cursor: "pointer", padding: "5px 10px", borderRadius: 999, border: "1px solid #2E2E2E" }}>
+                    <label key={p.id} style={{ display: "flex", gap: 6, alignItems: "center", fontSize: 13.5, cursor: "pointer", padding: "5px 10px", borderRadius: 999, border: "1px solid #262B33" }}>
                       <input
                         type="checkbox"
                         checked={form.profissionais.includes(p.id)}
@@ -160,7 +160,7 @@ export default function Servicos() {
                     </label>
                   ))}
                 </div>
-                <p style={{ fontSize: 12, color: "#8A8A8A", margin: "6px 0 0" }}>Depois, ajuste por profissional (inclusive tempo próprio) em Profissionais.</p>
+                <p style={{ fontSize: 12, color: "#6E7482", margin: "6px 0 0" }}>Depois, ajuste por profissional (inclusive tempo próprio) em Profissionais.</p>
               </>
             )}
             <label style={{ display: "flex", alignItems: "center", gap: 8, marginTop: 12, fontSize: 14, cursor: "pointer" }}>

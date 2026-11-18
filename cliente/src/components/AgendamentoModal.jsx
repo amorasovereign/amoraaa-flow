@@ -138,13 +138,13 @@ export default function AgendamentoModal({ agendamento, dataInicial, horaInicial
           <div>
             <h2 style={{ margin: 0, fontSize: 20, fontWeight: 800 }}>{editando ? "Editar agendamento" : "Novo agendamento"}</h2>
             {editando && (
-              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#A3A3A3" }}>
+              <p style={{ margin: "4px 0 0", fontSize: 13, color: "#9AA0AA" }}>
                 #{agendamento.id} · origem: {agendamento.origem === "whatsapp" ? "WhatsApp" : "sistema"}
                 {agendamento.profissionalEscolhidoPeloCliente ? " · profissional escolhido pelo cliente" : ""}
               </p>
             )}
           </div>
-          <button type="button" onClick={onClose} style={{ border: "none", background: "none", fontSize: 24, color: "#8A8A8A", cursor: "pointer" }}>×</button>
+          <button type="button" onClick={onClose} style={{ border: "none", background: "none", fontSize: 24, color: "#6E7482", cursor: "pointer" }}>×</button>
         </div>
 
         {erro && (
@@ -169,16 +169,16 @@ export default function AgendamentoModal({ agendamento, dataInicial, horaInicial
         <div style={{ display: "flex", flexDirection: "column", gap: 10, maxHeight: 220, overflowY: "auto", paddingRight: 4 }}>
           {porCategoria.map(([cat, lista]) => (
             <div key={cat}>
-              <div style={{ fontSize: 12, fontWeight: 700, color: "#8A8A8A", marginBottom: 6 }}>{cat}</div>
+              <div style={{ fontSize: 12, fontWeight: 700, color: "#6E7482", marginBottom: 6 }}>{cat}</div>
               <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 6 }}>
                 {lista.map((x) => {
                   const marcado = form.servicos.includes(x.id);
                   return (
-                    <label key={x.id} style={{ display: "flex", gap: 8, alignItems: "flex-start", padding: "8px 10px", borderRadius: 10, cursor: "pointer", border: `1.5px solid ${marcado ? "#E0A23A" : "#262626"}`, background: marcado ? "#1A160D" : "#141414" }}>
+                    <label key={x.id} style={{ display: "flex", gap: 8, alignItems: "flex-start", padding: "8px 10px", borderRadius: 10, cursor: "pointer", border: `1.5px solid ${marcado ? "#49C2A0" : "#262B33"}`, background: marcado ? "#0F2B24" : "#13171D" }}>
                       <input type="checkbox" checked={marcado} onChange={() => alternarServico(x.id)} style={{ accentColor: s.OURO, marginTop: 2 }} />
                       <span style={{ fontSize: 13 }}>
-                        <strong style={{ color: "#F2F2F2" }}>{x.nome}</strong>
-                        <span style={{ display: "block", color: "#A3A3A3", fontSize: 12 }}>{dinheiro(x.preco)} · {duracaoTexto(x.duracaoMin)}</span>
+                        <strong style={{ color: "#E7E9EC" }}>{x.nome}</strong>
+                        <span style={{ display: "block", color: "#9AA0AA", fontSize: 12 }}>{dinheiro(x.preco)} · {duracaoTexto(x.duracaoMin)}</span>
                       </span>
                     </label>
                   );
@@ -213,7 +213,7 @@ export default function AgendamentoModal({ agendamento, dataInicial, horaInicial
 
         {form.servicos.length > 0 && (
           <div style={{ marginTop: 10 }}>
-            <span style={{ fontSize: 12, color: "#A3A3A3" }}>
+            <span style={{ fontSize: 12, color: "#9AA0AA" }}>
               {carregandoLivres
                 ? "Buscando horários livres..."
                 : horarios.length
@@ -233,8 +233,8 @@ export default function AgendamentoModal({ agendamento, dataInicial, horaInicial
                     fontSize: 12.5,
                     fontWeight: 700,
                     cursor: "pointer",
-                    border: `1.5px solid ${form.inicio === h.hora ? s.OURO : "#2E2E2E"}`,
-                    background: form.inicio === h.hora ? s.OURO_CLARO : "#141414",
+                    border: `1.5px solid ${form.inicio === h.hora ? s.OURO : "#262B33"}`,
+                    background: form.inicio === h.hora ? s.OURO_CLARO : "#13171D",
                     color: form.inicio === h.hora ? s.OURO_ESCURO : "#D4D4D4",
                   }}
                 >
@@ -274,7 +274,7 @@ export default function AgendamentoModal({ agendamento, dataInicial, horaInicial
         <textarea style={{ ...s.input, minHeight: 56, resize: "vertical" }} value={form.observacoes} onChange={(e) => set("observacoes", e.target.value)} />
 
         {orcamento && (
-          <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: "#1A160D", border: "1px solid #5C4718" }}>
+          <div style={{ marginTop: 16, padding: 14, borderRadius: 12, background: "#0F2B24", border: "1px solid #1F4A63" }}>
             <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13.5, color: "#D4D4D4" }}>
               <span>{orcamento.quantidade} serviço(s) · {duracaoTexto(orcamento.duracaoTotal)}</span>
               <span>Subtotal {dinheiro(orcamento.subtotal)}</span>
@@ -286,11 +286,11 @@ export default function AgendamentoModal({ agendamento, dataInicial, horaInicial
               </div>
             )}
             {orcamento.erroCupom && <div style={{ fontSize: 13, color: "#F28B8B", marginTop: 4 }}>{orcamento.erroCupom}</div>}
-            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 17, fontWeight: 800, color: "#F2F2F2", marginTop: 8 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", fontSize: 17, fontWeight: 800, color: "#E7E9EC", marginTop: 8 }}>
               <span>Total</span>
               <span>{dinheiro(orcamento.total)}</span>
             </div>
-            {form.inicio && <div style={{ fontSize: 12.5, color: "#A3A3A3", marginTop: 4 }}>Das {form.inicio} às {fimPrevisto()}{form.profissionalId ? "" : " (tempo pode variar conforme o profissional)"}</div>}
+            {form.inicio && <div style={{ fontSize: 12.5, color: "#9AA0AA", marginTop: 4 }}>Das {form.inicio} às {fimPrevisto()}{form.profissionalId ? "" : " (tempo pode variar conforme o profissional)"}</div>}
           </div>
         )}
 

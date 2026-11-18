@@ -13,7 +13,7 @@ import Usuarios from "./pages/admin/Usuarios";
 
 function Protegida({ children, quando = true }) {
   const { usuario, carregando } = useAuth();
-  if (carregando) return <div style={{ padding: 40, color: "#A3A3A3" }}>Carregando...</div>;
+  if (carregando) return <div style={{ padding: 40, color: "#9AA0AA" }}>Carregando...</div>;
   if (!usuario) return <Navigate to="/login" replace />;
   if (!quando) return <Navigate to="/" replace />;
   return children;

@@ -30,13 +30,13 @@ export default function Financeiro() {
 
   const CardResumo = ({ titulo, p, destaque }) => (
     <div style={{ ...s.card, borderTop: `4px solid ${destaque || s.OURO}` }}>
-      <div style={{ fontSize: 12, fontWeight: 700, color: "#8A8A8A", textTransform: "uppercase" }}>{titulo}</div>
+      <div style={{ fontSize: 12, fontWeight: 700, color: "#6E7482", textTransform: "uppercase" }}>{titulo}</div>
       <div style={{ fontSize: 26, fontWeight: 800, margin: "6px 0 2px" }}>{dinheiro(p?.previsto)}</div>
-      <div style={{ fontSize: 12.5, color: "#A3A3A3" }}>previsto · {p?.quantidade || 0} atendimento(s) · {duracaoTexto(p?.minutos || 0)}</div>
+      <div style={{ fontSize: 12.5, color: "#9AA0AA" }}>previsto · {p?.quantidade || 0} atendimento(s) · {duracaoTexto(p?.minutos || 0)}</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10 }}>
         <span style={s.chip("#0F2A1A", "#6FD69A")}>Recebido {dinheiro(p?.realizado)}</span>
-        {Number(p?.cancelado) > 0 && <span style={s.chip("#1F1F1F", "#A3A3A3")}>Cancelado {dinheiro(p?.cancelado)}</span>}
-        {Number(p?.descontos) > 0 && <span style={s.chip("#2A2110", "#F0C46A")}>Descontos {dinheiro(p?.descontos)}</span>}
+        {Number(p?.cancelado) > 0 && <span style={s.chip("#1C2027", "#9AA0AA")}>Cancelado {dinheiro(p?.cancelado)}</span>}
+        {Number(p?.descontos) > 0 && <span style={s.chip("#0F2B24", "#7CE0C4")}>Descontos {dinheiro(p?.descontos)}</span>}
       </div>
     </div>
   );
@@ -63,7 +63,7 @@ export default function Financeiro() {
           <div>
             <strong style={{ fontSize: 16 }}>Dia a dia · {MESES[mesNum - 1]} {ano}</strong>
             {dados && (
-              <div style={{ fontSize: 13, color: "#A3A3A3", marginTop: 2 }}>
+              <div style={{ fontSize: 13, color: "#9AA0AA", marginTop: 2 }}>
                 Previsto {dinheiro(dados.totais.previsto)} · recebido {dinheiro(dados.totais.realizado)} · {dados.totais.quantidade} atendimento(s) · ticket médio {dinheiro(dados.ticketMedio)}
               </div>
             )}
@@ -76,9 +76,9 @@ export default function Financeiro() {
         </div>
 
         {!dados ? (
-          <p style={{ color: "#8A8A8A" }}>Carregando...</p>
+          <p style={{ color: "#6E7482" }}>Carregando...</p>
         ) : dados.porDia.length === 0 ? (
-          <p style={{ color: "#8A8A8A" }}>Nenhum agendamento neste mês.</p>
+          <p style={{ color: "#6E7482" }}>Nenhum agendamento neste mês.</p>
         ) : (
           <div style={{ overflowX: "auto" }}>
             <table style={s.table}>
@@ -94,22 +94,22 @@ export default function Financeiro() {
               </thead>
               <tbody>
                 {dados.porDia.map((d) => (
-                  <tr key={d.data} style={{ background: d.data === hoje ? "#1A160D" : undefined }}>
+                  <tr key={d.data} style={{ background: d.data === hoje ? "#0F2B24" : undefined }}>
                     <td style={s.td}>
-                      <strong>{dataBR(d.data)}</strong> <span style={{ color: "#8A8A8A", fontSize: 12 }}>{DIAS_CURTOS[diaSemana(d.data)]}</span>
+                      <strong>{dataBR(d.data)}</strong> <span style={{ color: "#6E7482", fontSize: 12 }}>{DIAS_CURTOS[diaSemana(d.data)]}</span>
                     </td>
                     <td style={s.td}>{d.quantidade}</td>
                     <td style={s.td}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                        <div style={{ flex: 1, height: 10, background: "#1F1F1F", borderRadius: 99, overflow: "hidden" }}>
-                          <div style={{ width: `${(d.previsto / maxDia) * 100}%`, height: "100%", background: "linear-gradient(90deg, #FFD98A, #E0A23A)" }} />
+                        <div style={{ flex: 1, height: 10, background: "#1C2027", borderRadius: 99, overflow: "hidden" }}>
+                          <div style={{ width: `${(d.previsto / maxDia) * 100}%`, height: "100%", background: "linear-gradient(90deg, #7CE0C4, #49C2A0)" }} />
                         </div>
                         <strong style={{ minWidth: 92, textAlign: "right" }}>{dinheiro(d.previsto)}</strong>
                       </div>
                     </td>
                     <td style={{ ...s.td, textAlign: "right", color: "#6FD69A" }}>{dinheiro(d.realizado)}</td>
-                    <td style={{ ...s.td, textAlign: "right", color: "#A3A3A3" }}>{dinheiro(d.cancelado)}</td>
-                    <td style={{ ...s.td, textAlign: "right", color: "#F0C46A" }}>{dinheiro(d.descontos)}</td>
+                    <td style={{ ...s.td, textAlign: "right", color: "#9AA0AA" }}>{dinheiro(d.cancelado)}</td>
+                    <td style={{ ...s.td, textAlign: "right", color: "#7CE0C4" }}>{dinheiro(d.descontos)}</td>
                   </tr>
                 ))}
               </tbody>
@@ -155,10 +155,10 @@ export default function Financeiro() {
           <strong style={{ fontSize: 16 }}>Serviços mais agendados no mês</strong>
           <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
             {dados.servicosMaisVendidos.map((x) => (
-              <div key={x.nome} style={{ display: "flex", justifyContent: "space-between", fontSize: 14, borderBottom: "1px solid #1F1F1F", paddingBottom: 6 }}>
+              <div key={x.nome} style={{ display: "flex", justifyContent: "space-between", fontSize: 14, borderBottom: "1px solid #1C2027", paddingBottom: 6 }}>
                 <span>{x.nome}</span>
-                <span style={{ color: "#A3A3A3" }}>
-                  {x.quantidade}× · <strong style={{ color: "#F2F2F2" }}>{dinheiro(x.valor)}</strong>
+                <span style={{ color: "#9AA0AA" }}>
+                  {x.quantidade}× · <strong style={{ color: "#E7E9EC" }}>{dinheiro(x.valor)}</strong>
                 </span>
               </div>
             ))}
