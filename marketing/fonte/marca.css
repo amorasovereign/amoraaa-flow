@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Unbounded:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500&display=block");
+
+:root {
+  --tinta: #0D1014;
+  --tinta-2: #0A0D11;
+  --card: #13171D;
+  --card-2: #171C23;
+  --borda: #262B33;
+  --texto: #E7E9EC;
+  --suave: #9AA0AA;
+  --apagado: #6E7482;
+  --verde: #49C2A0;
+  --verde-claro: #7CE0C4;
+  --verde-fundo: #0F2B24;
+  --aco: #3E7FB5;
+  --prata: #AEB5BF;
+  --marca: "Unbounded", "Manrope", sans-serif;
+  --corpo: "Inter", -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: var(--tinta); color: var(--texto); font-family: var(--corpo); -webkit-font-smoothing: antialiased; }
+img { display: block; }
+
+/* ---------- logotipo ---------- */
+.logo { display: inline-flex; align-items: center; gap: .5em; font-family: var(--marca); font-weight: 700; letter-spacing: .02em; line-height: 1; }
+.logo svg { width: 1.9em; height: 1.9em; flex-shrink: 0; }
+.logo b { color: var(--texto); font-weight: 700; }
+.logo i { color: var(--verde); font-style: normal; font-size: .86em; }
+
+/* ---------- peças comuns ---------- */
+.rotulo { font-family: var(--mono); font-size: 18px; letter-spacing: .18em; text-transform: uppercase; color: var(--verde); }
+.titulo { font-family: var(--marca); font-weight: 700; letter-spacing: -.01em; line-height: 1.08; }
+.titulo em { font-style: normal; color: var(--verde); }
+.suave { color: var(--suave); }
+.chip { display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--verde-fundo); color: var(--verde-claro); font-weight: 600; }
+.card { background: var(--card); border: 1px solid var(--borda); border-radius: 22px; }
+.brilho { position: absolute; border-radius: 50%; filter: blur(120px); opacity: .22; pointer-events: none; }
+.grade-fundo {
+  position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(var(--borda) 1px, transparent 1px), linear-gradient(90deg, var(--borda) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 65%);
+  -webkit-mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 65%);
+}
+.icone { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+
+/* ---------- janela de navegador com print ---------- */
+.janela { border-radius: 18px; overflow: hidden; border: 1px solid #2E343D; background: var(--tinta-2); box-shadow: 0 40px 90px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.02); }
+.janela .barra { height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 16px; background: #11151A; border-bottom: 1px solid var(--borda); }
+.janela .barra span { width: 12px; height: 12px; border-radius: 50%; background: #2B313A; }
+.janela img { width: 100%; height: auto; }
+
+/* ---------- celular com conversa ---------- */
+.celular { width: 420px; border-radius: 54px; padding: 14px; background: #1A1F26; border: 1px solid #333A44; box-shadow: 0 50px 100px rgba(0,0,0,.6); }
+.celular .tela { border-radius: 42px; overflow: hidden; background: #0B141A; }
+.celular .topo { display: flex; align-items: center; gap: 14px; padding: 34px 22px 16px; background: #1F2C33; }
+.celular .avatar { width: 46px; height: 46px; border-radius: 50%; background: linear-gradient(135deg, var(--verde-claro), var(--verde)); color: #07110E; display: grid; place-items: center; font-weight: 700; font-size: 20px; }
+.celular .nome { font-weight: 600; font-size: 19px; }
+.celular .status { font-size: 14px; color: var(--verde-claro); margin-top: 2px; }
+.celular .msgs { padding: 20px 16px 26px; display: flex; flex-direction: column; gap: 10px; }
+.msg { max-width: 82%; padding: 11px 15px 20px; border-radius: 16px; font-size: 17px; line-height: 1.38; position: relative; }
+.msg small { position: absolute; right: 12px; bottom: 5px; font-size: 11.5px; color: rgba(231,233,236,.55); }
+.msg.cli { align-self: flex-end; background: #144D37; border-top-right-radius: 4px; }
+.msg.bot { align-self: flex-start; background: #1F2C33; border-top-left-radius: 4px; }
+.msg.bot b { color: var(--verde-claro); }
+
+/* contato da chamada final */
+.contato { display: inline-flex; align-self: flex-start; width: fit-content; align-items: center; gap: 22px; padding: 22px 34px 22px 26px; border-radius: 999px; border: 1px solid #2E5A4E; background: var(--verde-fundo, #0F2B24); position: relative; }
+.contato .icone { font-size: 1.5em; color: var(--verde); }
+.contato small { display: block; font-family: var(--mono); font-size: .52em; letter-spacing: .16em; text-transform: uppercase; color: var(--verde); margin-bottom: 4px; }
+.contato b { font-family: var(--mono); font-weight: 500; color: var(--texto); letter-spacing: .02em; }

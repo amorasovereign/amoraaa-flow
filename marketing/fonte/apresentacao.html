@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Amora Flow — Apresentação completa</title>
+<link rel="stylesheet" href="marca.css">
+<link rel="stylesheet" href="deck.css">
+<style>
+  .sumario { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 0 100px; margin-top: 64px; counter-reset: s; }
+  .sumario li { counter-increment: s; display: flex; gap: 28px; align-items: baseline; padding: 26px 0; border-bottom: 1px solid var(--borda); font-size: 30px; }
+  .sumario li::before { content: counter(s, decimal-leading-zero); font-family: var(--mono); font-size: 20px; color: var(--verde); }
+  .pilar { padding: 48px 44px; }
+  .pilar .icone { font-size: 52px; color: var(--verde); }
+  .pilar h3 { font-family: var(--marca); font-size: 32px; font-weight: 600; margin: 34px 0 20px; }
+  .pilar ul { list-style: none; display: flex; flex-direction: column; gap: 14px; font-size: 22px; color: var(--suave); line-height: 1.4; }
+  .pilar li::before { content: "— "; color: var(--verde); }
+  .passos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; margin-top: 72px; position: relative; }
+  .passos .item { position: relative; }
+  .passos .item + .item::before { content: ""; position: absolute; left: -28px; top: 64px; width: 28px; height: 2px; background: var(--verde); opacity: .5; }
+  .destaque { margin-top: 48px; padding: 30px 36px; border-left: 3px solid var(--verde); background: var(--card); border-radius: 0 16px 16px 0; font-size: 23px; color: var(--suave); line-height: 1.5; max-width: 1400px; }
+  .destaque b { color: var(--texto); }
+</style>
+</head>
+<body>
+
+<!-- 1 · Capa -->
+<section class="slide capa">
+  <div class="grade-fundo"></div>
+  <div class="brilho a"></div><div class="brilho b"></div>
+  <div data-logo style="font-size:30px; position:relative"></div>
+  <h1 class="titulo" style="margin-top:80px; max-width:1300px; position:relative">Atendimento, agenda e gestão <em>no mesmo fluxo</em>.</h1>
+  <p class="lead" style="position:relative">Apresentação institucional da plataforma Amora Flow para negócios que trabalham com horário marcado.</p>
+  <div class="rod" style="border:0"><span>Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 2 · Sumário -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">Sumário</p>
+  <h2 class="titulo">O que você vai ver</h2>
+  <ol class="sumario">
+    <li>O desafio dos negócios de horário marcado</li>
+    <li>A plataforma em três pilares</li>
+    <li>A atendente virtual no WhatsApp</li>
+    <li>Agenda, agendamentos e profissionais</li>
+    <li>Regras, avisos e configurações</li>
+    <li>Financeiro, acessos e segurança</li>
+    <li>Segmentos atendidos</li>
+    <li>Implantação e próximos passos</li>
+  </ol>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 3 · Desafio -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">01 · O desafio</p>
+  <h2 class="titulo">O WhatsApp virou a recepção. E ninguém dá conta de <em>responder tudo</em>.</h2>
+  <div class="cols c3" style="margin-top:80px">
+    <div class="card item"><i data-i="lua"></i><h3>Mensagens fora do horário</h3><p>Cliente pede horário à noite, no domingo ou durante um atendimento — e a resposta só vem horas depois.</p></div>
+    <div class="card item"><i data-i="lista"></i><h3>Agenda espalhada</h3><p>Caderno, planilha e conversas soltas. Cada profissional sabe do seu dia, ninguém vê o todo.</p></div>
+    <div class="card item"><i data-i="bloqueio"></i><h3>Conflitos e esquecimentos</h3><p>Dois clientes no mesmo horário, marcações durante a pausa ou a folga, clientes que esquecem o compromisso.</p></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 4 · O que se perde -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">01 · O desafio</p>
+  <h2 class="titulo">O que se perde quando o atendimento <em>depende de alguém livre</em>.</h2>
+  <table class="t">
+    <tr><th>Onde dói</th><th>O que acontece no dia a dia</th></tr>
+    <tr><td>Tempo da equipe</td><td>Profissionais param o atendimento para responder mensagem, conferir horário e confirmar cliente.</td></tr>
+    <tr><td>Clientes que desistem</td><td>Quem não recebe resposta rápida procura o concorrente que respondeu primeiro.</td></tr>
+    <tr><td>Buracos na agenda</td><td>Cancelamentos que não são reaproveitados e faltas sem aviso deixam horários vazios.</td></tr>
+    <tr><td>Visão do dono</td><td>Sem um lugar único, é difícil saber o que entrou, o que foi cancelado e como cada profissional está.</td></tr>
+  </table>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 5 · Três pilares -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">02 · A plataforma</p>
+  <h2 class="titulo">Uma plataforma, <em>três pilares</em>.</h2>
+  <div class="cols c3" style="margin-top:64px">
+    <div class="card pilar"><i data-i="conversa"></i><h3>Atendente virtual</h3><ul><li>Responde no WhatsApp do negócio</li><li>Agenda, remarca e cancela</li><li>Fala com o nome e o jeito da casa</li></ul></div>
+    <div class="card pilar"><i data-i="agenda"></i><h3>Agenda inteligente</h3><ul><li>Dia por profissional e visão do mês</li><li>Pausas, folgas e bloqueios</li><li>Nenhum horário em conflito</li></ul></div>
+    <div class="card pilar"><i data-i="grafico"></i><h3>Gestão do negócio</h3><ul><li>Financeiro do período</li><li>Desempenho por profissional</li><li>Acessos por função</li></ul></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 6 · Atendente: o que faz -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">03 · Atendente virtual</p>
+  <h2 class="titulo">Tudo o que a recepção faz no WhatsApp, <em>a qualquer hora</em>.</h2>
+  <div class="cols c4" style="margin-top:64px">
+    <div class="card item"><i data-i="tesoura"></i><h3>Apresenta os serviços</h3><p>Com duração e quem faz cada um.</p></div>
+    <div class="card item"><i data-i="relogio"></i><h3>Consulta horários livres</h3><p>Direto na agenda real, por profissional.</p></div>
+    <div class="card item"><i data-i="agenda"></i><h3>Marca o atendimento</h3><p>Um ou vários serviços na mesma visita.</p></div>
+    <div class="card item"><i data-i="lista"></i><h3>Mostra os agendamentos</h3><p>O cliente pergunta e recebe os próprios horários.</p></div>
+    <div class="card item"><i data-i="troca"></i><h3>Remarca</h3><p>Troca dia e hora sem passar pela recepção.</p></div>
+    <div class="card item"><i data-i="bloqueio"></i><h3>Cancela</h3><p>Até o limite de antecedência que você definir.</p></div>
+    <div class="card item"><i data-i="etiqueta"></i><h3>Aplica cupons</h3><p>E descontos dentro do limite autorizado.</p></div>
+    <div class="card item"><i data-i="pessoas"></i><h3>Escolhe o profissional</h3><p>Ou deixa o cliente escolher — você decide.</p></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 7 · Conversa -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <div class="col2">
+    <div>
+      <p class="rotulo">03 · Atendente virtual</p>
+      <h2 class="titulo" style="font-size:58px">Com o nome e <em>o jeito do seu negócio</em>.</h2>
+      <ul class="lista">
+        <li><i data-i="pessoa"></i><span><b>Nome próprio</b> — a Bia do salão, o Zé da barbearia, a Clara da clínica.</span></li>
+        <li><i data-i="nota"></i><span><b>Instruções da casa</b> — convênios aceitos, cuidados antes do procedimento, o que nunca dizer.</span></li>
+        <li><i data-i="cadeado"></i><span><b>Limites claros</b> — só oferece horários que existem e só dá o desconto que você autorizou.</span></li>
+      </ul>
+    </div>
+    <div style="display:flex; justify-content:center">
+      <div class="celular">
+        <div class="tela">
+          <div class="topo"><div class="avatar">B</div><div><div class="nome">Salão Bella Donna</div><div class="status">online</div></div></div>
+          <div class="msgs">
+            <div class="msg cli">Oi! Tem horário pra escova amanhã à tarde?<small>21:42</small></div>
+            <div class="msg bot">Oi! Aqui é a Bia, do Salão Bella Donna. Amanhã tenho <b>14:30</b> com a Jéssica ou <b>16:00</b> com a Renata. Qual prefere?<small>21:42</small></div>
+            <div class="msg cli">16h com a Renata<small>21:43</small></div>
+            <div class="msg bot">Pronto! Escova marcada para <b>quinta, 19/11, às 16:00</b> com a Renata. Se precisar remarcar, é só me chamar aqui.<small>21:43</small></div>
+            <div class="msg cli">Perfeito, obrigada!<small>21:43</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional · Conversa ilustrativa</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 8 · Fluxo -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">03 · Atendente virtual</p>
+  <h2 class="titulo">Do “oi” ao horário marcado, <em>sem ninguém digitar</em>.</h2>
+  <div class="passos">
+    <div class="card item"><span class="n">01</span><h3>O cliente chama</h3><p>No WhatsApp do negócio, a qualquer hora.</p></div>
+    <div class="card item"><span class="n">02</span><h3>A atendente consulta</h3><p>Serviços, duração, profissionais, pausas e folgas.</p></div>
+    <div class="card item"><span class="n">03</span><h3>O horário é marcado</h3><p>Entra na agenda do profissional na mesma hora.</p></div>
+    <div class="card item"><span class="n">04</span><h3>Todos são avisados</h3><p>O cliente recebe a confirmação e o dono, o aviso.</p></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 9 · Agenda -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <div class="col2" style="grid-template-columns: 600px 1fr; gap:70px">
+    <div>
+      <p class="rotulo">04 · Agenda</p>
+      <h2 class="titulo" style="font-size:50px">Cada profissional, <em>uma coluna</em>. O dia inteiro numa tela.</h2>
+      <ul class="lista">
+        <li><i data-i="ok"></i><span>WhatsApp e recepção na mesma agenda</span></li>
+        <li><i data-i="ok"></i><span>Pausas, folgas e horários próprios visíveis</span></li>
+        <li><i data-i="ok"></i><span>Clique no horário vazio para agendar</span></li>
+        <li><i data-i="ok"></i><span>Visão do dia ou do mês inteiro</span></li>
+      </ul>
+    </div>
+    <div class="print"><div class="janela"><div class="barra"><span></span><span></span><span></span></div><img src="img/bella-agenda.png" alt="Agenda do dia por profissional"></div></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional · Tela real com dados de demonstração</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 10 · Agendamentos -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <div class="col2" style="grid-template-columns: 600px 1fr; gap:70px">
+    <div>
+      <p class="rotulo">04 · Agendamentos</p>
+      <h2 class="titulo" style="font-size:50px">Todos os horários, <em>com origem e status</em>.</h2>
+      <ul class="lista">
+        <li><i data-i="ok"></i><span>Filtros por período, status e profissional</span></li>
+        <li><i data-i="ok"></i><span>Busca por nome ou telefone do cliente</span></li>
+        <li><i data-i="ok"></i><span>Confirmar, concluir, marcar falta ou cancelar em um clique</span></li>
+        <li><i data-i="ok"></i><span>Mostra o que veio do WhatsApp e quem o cliente escolheu</span></li>
+      </ul>
+    </div>
+    <div class="print"><div class="janela"><div class="barra"><span></span><span></span><span></span></div><img src="img/navalha-agendamentos.png" alt="Lista de agendamentos"></div></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional · Tela real com dados de demonstração</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 11 · Profissionais -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <div class="col2" style="grid-template-columns: 600px 1fr; gap:70px">
+    <div>
+      <p class="rotulo">04 · Profissionais</p>
+      <h2 class="titulo" style="font-size:50px">Quem faz o quê, <em>em quanto tempo</em>.</h2>
+      <ul class="lista">
+        <li><i data-i="ok"></i><span>Serviços de cada profissional</span></li>
+        <li><i data-i="ok"></i><span>Tempo próprio por serviço quando precisa</span></li>
+        <li><i data-i="ok"></i><span>Horário próprio dentro do horário do negócio</span></li>
+        <li><i data-i="ok"></i><span>Acesso individual à própria agenda</span></li>
+      </ul>
+    </div>
+    <div class="print"><div class="janela"><div class="barra"><span></span><span></span><span></span></div><img src="img/bella-profissionais.png" alt="Cadastro de profissionais"></div></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional · Tela real com dados de demonstração</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 12 · Regras -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">05 · Regras da agenda</p>
+  <h2 class="titulo">Feita para <em>não errar</em> horário.</h2>
+  <div class="cols c3" style="margin-top:64px">
+    <div class="card item"><i data-i="bloqueio"></i><h3>Sem conflitos</h3><p>Não marca no passado, fora do horário, na pausa ou em cima de outro atendimento.</p></div>
+    <div class="card item"><i data-i="relogio"></i><h3>Tempo por profissional</h3><p>Cada um com seus serviços e o próprio tempo — o aprendiz pode levar mais.</p></div>
+    <div class="card item"><i data-i="agenda"></i><h3>Folgas e feriados</h3><p>Férias, cursos e feriados para o negócio todo ou para uma pessoa.</p></div>
+    <div class="card item"><i data-i="pessoas"></i><h3>Escolha automática</h3><p>Se o cliente não tem preferência, vai para quem está livre e com o dia mais leve.</p></div>
+    <div class="card item"><i data-i="lista"></i><h3>Vários serviços juntos</h3><p>Corte + barba, escova + hidratação: o tempo é somado num só atendimento.</p></div>
+    <div class="card item"><i data-i="etiqueta"></i><h3>Descontos e cupons</h3><p>Por quantidade de serviços, por cupom ou dentro do limite que você definir.</p></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 13 · Avisos -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">05 · Avisos automáticos</p>
+  <h2 class="titulo">Todo mundo sabe de tudo, <em>na hora</em>.</h2>
+  <table class="t">
+    <tr><th>Quem muda</th><th>O dono recebe</th><th>O cliente recebe</th></tr>
+    <tr><td>Cliente, pelo WhatsApp</td><td>O que mudou e a agenda do dia</td><td>A resposta da atendente na própria conversa</td></tr>
+    <tr><td>Negócio, pelo sistema</td><td>O que mudou e a agenda do dia</td><td>Confirmação, remarcação ou cancelamento automático, com o motivo</td></tr>
+    <tr><td>Todo dia, de madrugada</td><td>A agenda completa do dia no WhatsApp</td><td>—</td></tr>
+  </table>
+  <p class="destaque">O aviso ao cliente pode ser <b>desligado para o negócio</b> ou <b>em cada ação</b>, quando a recepção preferir falar pessoalmente.</p>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 14 · Configurações -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <div class="col2" style="grid-template-columns: 600px 1fr; gap:70px">
+    <div>
+      <p class="rotulo">05 · Configurações</p>
+      <h2 class="titulo" style="font-size:50px">As regras são suas, <em>do seu jeito</em>.</h2>
+      <ul class="lista">
+        <li><i data-i="ok"></i><span>Dias, horários e quantas pausas quiser</span></li>
+        <li><i data-i="ok"></i><span>Nome e instruções da atendente virtual</span></li>
+        <li><i data-i="ok"></i><span>Antecedência mínima para cancelar</span></li>
+        <li><i data-i="ok"></i><span>Faixas de desconto e cupons com validade</span></li>
+      </ul>
+    </div>
+    <div class="print"><div class="janela"><div class="barra"><span></span><span></span><span></span></div><img src="img/clinica-config.png" alt="Configurações do negócio"></div></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional · Tela real com dados de demonstração</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 15 · Financeiro -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">06 · Financeiro</p>
+  <h2 class="titulo">O mês do negócio <em>em uma página</em>.</h2>
+  <div class="cols c3" style="margin-top:64px">
+    <div class="card item"><i data-i="dinheiro"></i><h3>Resumo do período</h3><p>Atendimentos, previsto, recebido, cancelado e descontos concedidos.</p></div>
+    <div class="card item"><i data-i="pessoas"></i><h3>Por profissional</h3><p>Atendimentos, horas trabalhadas, recebido e ticket médio de cada um.</p></div>
+    <div class="card item"><i data-i="grafico"></i><h3>Serviços mais procurados</h3><p>O que mais sai no mês, para decidir promoções, equipe e horários.</p></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 16 · Acessos -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">06 · Acessos e segurança</p>
+  <h2 class="titulo">Cada pessoa vê <em>só o que precisa</em>.</h2>
+  <table class="t">
+    <tr><th>Acesso</th><th>O que vê e faz</th></tr>
+    <tr><td>Gestor</td><td>Tudo do negócio: agenda, profissionais, serviços, financeiro, configurações, cupons e folgas.</td></tr>
+    <tr><td>Recepção</td><td>Agenda, agendamentos, folgas e financeiro.</td></tr>
+    <tr><td>Profissional</td><td>Só a própria agenda — confirma, conclui ou marca falta.</td></tr>
+  </table>
+  <p class="destaque"><b>Dados isolados por negócio.</b> O isolamento é garantido no servidor: um usuário nunca acessa informações de outro negócio, mesmo tentando.</p>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 17 · Segmentos -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">07 · Segmentos</p>
+  <h2 class="titulo">Um sistema, <em>vários tipos de negócio</em>.</h2>
+  <table class="t" style="font-size:21px">
+    <tr><th>Segmento</th><th>Como a Amora Flow se adapta</th></tr>
+    <tr><td>Salões e esmalterias</td><td>Química, noivas, alongamento e manutenção; descontos por quantidade de serviços.</td></tr>
+    <tr><td>Barbearias</td><td>Combos corte + barba, aprendiz com tempo maior, meio período aos domingos.</td></tr>
+    <tr><td>Clínicas de saúde</td><td>Horários diferentes por especialidade e orientação de emergência na conversa.</td></tr>
+    <tr><td>Odontologia e estética</td><td>Avaliações, urgências, convênios e profissionais em dias específicos.</td></tr>
+    <tr><td>Pilates, pet e tatuagem</td><td>Aula experimental, banho por porte, sessões longas e orçamento.</td></tr>
+  </table>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 18 · Implantação -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">08 · Implantação</p>
+  <h2 class="titulo">Do primeiro contato à agenda <em>atendendo sozinha</em>.</h2>
+  <div class="passos">
+    <div class="card item"><span class="n">01</span><h3>Conexão do WhatsApp</h3><p>Ligamos o número do negócio à atendente virtual.</p></div>
+    <div class="card item"><span class="n">02</span><h3>Cadastro do negócio</h3><p>Serviços, profissionais, horários e regras.</p></div>
+    <div class="card item"><span class="n">03</span><h3>Acessos da equipe</h3><p>Gestor, recepção e profissionais com seus logins.</p></div>
+    <div class="card item"><span class="n">04</span><h3>Atendimento no ar</h3><p>A atendente começa a responder e marcar.</p></div>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 19 · Por que -->
+<section class="slide">
+  <div class="cab"><span data-logo></span></div>
+  <p class="rotulo">08 · Por que Amora Flow</p>
+  <h2 class="titulo">Por que <em>Amora Flow</em>.</h2>
+  <div class="cols c2" style="margin-top:56px">
+    <ul class="lista" style="margin:0">
+      <li><i data-i="conversa"></i><span><b>Atendimento que não dorme</b> — o cliente é respondido na hora em que chama.</span></li>
+      <li><i data-i="agenda"></i><span><b>Uma agenda só</b> — WhatsApp e recepção marcando no mesmo lugar.</span></li>
+      <li><i data-i="bloqueio"></i><span><b>Zero conflito de horário</b> — regras checadas em cada marcação.</span></li>
+    </ul>
+    <ul class="lista" style="margin:0">
+      <li><i data-i="sino"></i><span><b>Dono sempre informado</b> — agenda do dia e cada mudança no WhatsApp.</span></li>
+      <li><i data-i="grafico"></i><span><b>Números do negócio</b> — financeiro por período e por profissional.</span></li>
+      <li><i data-i="cadeado"></i><span><b>Acessos por função</b> — e dados isolados por negócio.</span></li>
+    </ul>
+  </div>
+  <div class="rod"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<!-- 20 · CTA -->
+<section class="slide capa">
+  <div class="grade-fundo"></div>
+  <div class="brilho a"></div><div class="brilho b"></div>
+  <p class="rotulo" style="position:relative">Próximo passo</p>
+  <h1 class="titulo" style="max-width:1400px; position:relative">Veja a sua agenda <em>funcionando</em> no seu WhatsApp.</h1>
+  <p class="lead" style="position:relative">Agende uma demonstração: mostramos a atendente virtual conversando e marcando com os serviços e profissionais do seu negócio.</p>
+  <div class="contato" style="margin-top:64px; font-size:40px"><i data-i="conversa"></i><div><small>WhatsApp</small><b>(81) 98444-6381</b></div></div>
+  <div style="margin-top:56px; position:relative; font-size:26px" data-logo></div>
+  <div class="rod" style="border:0"><span>Amora Flow · Apresentação institucional</span><span class="num" data-total></span></div>
+</section>
+
+<script src="marca.js"></script>
+<script>
+  const total = String(document.querySelectorAll(".slide").length).padStart(2, "0");
+  document.querySelectorAll(".num").forEach((n) => (n.dataset.total = total));
+</script>
+</body>
+</html>

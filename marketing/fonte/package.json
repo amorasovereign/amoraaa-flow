@@ -1,0 +1,11 @@
+{
+  "name": "amora-flow-marketing",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "gerar": "node gerar.mjs"
+  },
+  "devDependencies": {
+    "puppeteer-core": "23.11.1"
+  }
+}

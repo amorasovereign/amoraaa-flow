@@ -1,0 +1,56 @@
+@page { size: 1920px 1080px; margin: 0; }
+body { counter-reset: pag; }
+
+.slide {
+  width: 1920px; height: 1080px; position: relative; overflow: hidden;
+  padding: 130px 140px 120px; background: var(--tinta);
+  page-break-after: always; break-after: page;
+  counter-increment: pag;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+
+/* cabeçalho e rodapé formais */
+.slide .cab { position: absolute; top: 56px; left: 140px; right: 140px; display: flex; justify-content: space-between; align-items: center; font-size: 22px; }
+.slide .cab .logo { font-size: 18px; }
+.slide .cab .secao { font-family: var(--mono); font-size: 16px; letter-spacing: .16em; text-transform: uppercase; color: var(--apagado); }
+.slide .rod { position: absolute; bottom: 52px; left: 140px; right: 140px; display: flex; justify-content: space-between; font-size: 16px; color: var(--apagado); border-top: 1px solid var(--borda); padding-top: 20px; }
+.slide .rod .num::before { content: counter(pag, decimal-leading-zero); color: var(--suave); font-family: var(--mono); }
+.slide .rod .num::after { content: " / " attr(data-total); font-family: var(--mono); }
+
+.slide h1.titulo { font-size: 92px; }
+.slide h2.titulo { font-size: 64px; max-width: 1300px; }
+.slide .lead { font-size: 30px; line-height: 1.5; color: var(--suave); max-width: 1100px; margin-top: 28px; }
+.slide .rotulo { margin-bottom: 28px; }
+
+.col2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; flex: 1; }
+.cols { display: grid; gap: 28px; margin-top: 56px; }
+.c3 { grid-template-columns: repeat(3, 1fr); }
+.c4 { grid-template-columns: repeat(4, 1fr); }
+.c2 { grid-template-columns: repeat(2, 1fr); }
+
+.item { padding: 38px 36px; }
+.item .icone { font-size: 40px; color: var(--verde); }
+.item h3 { font-size: 28px; font-weight: 600; margin: 26px 0 12px; line-height: 1.25; }
+.item p { font-size: 21px; line-height: 1.5; color: var(--suave); }
+.item .n { font-family: var(--mono); font-size: 18px; color: var(--verde); letter-spacing: .1em; }
+
+.lista { list-style: none; display: flex; flex-direction: column; gap: 24px; margin-top: 44px; }
+.lista li { display: flex; gap: 20px; font-size: 26px; line-height: 1.4; }
+.lista li .icone { font-size: 30px; color: var(--verde); margin-top: 3px; }
+.lista li span b { color: var(--texto); font-weight: 600; }
+.lista li span { color: var(--suave); }
+
+/* tabelas formais */
+table.t { width: 100%; border-collapse: collapse; margin-top: 52px; font-size: 22px; }
+table.t th { text-align: left; font-family: var(--mono); font-size: 15px; letter-spacing: .14em; text-transform: uppercase; color: var(--apagado); font-weight: 500; padding: 0 24px 18px 0; border-bottom: 1px solid var(--borda); }
+table.t td { padding: 24px 24px 24px 0; border-bottom: 1px solid var(--borda); color: var(--suave); line-height: 1.45; vertical-align: top; }
+table.t td:first-child { color: var(--texto); font-weight: 600; width: 22%; }
+
+.print { position: relative; }
+.print .janela { width: 100%; }
+
+/* capa */
+.capa { padding: 0 140px; justify-content: center; }
+.capa .brilho.a { width: 900px; height: 900px; background: var(--verde); right: -250px; top: -250px; }
+.capa .brilho.b { width: 700px; height: 700px; background: var(--aco); right: 300px; bottom: -400px; opacity: .18; }
